@@ -49,11 +49,13 @@ page.open("https://gst.customs.gov.my/tap/_/#1", function(status){
 
 					setTimeout(function(){
 					
-						//var e = document.createEvent('MouseEvents');
-						//e.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-						//document.querySelector("input#d-7").dispatchEvent(e); 
 						document.getElementById("d-7").focus();
+						
+						setTimeout(function(){
 					
+							document.getElementById("d-7").focus();
+					
+						}, 1000);
 					
 					}, 1000);
 				   
@@ -66,7 +68,10 @@ page.open("https://gst.customs.gov.my/tap/_/#1", function(status){
  }, 10000);
  
 	setTimeout(function(){
-			page.render('gstcustoms2.png');  
+			var fs = require('fs');
+			var path = 'gstscrape.html' 
+			var content = page.content;
+			fs.write(path,content,'w')
 			phantom.exit()   
 	}, 15000);
 
